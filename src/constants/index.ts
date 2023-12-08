@@ -24,7 +24,7 @@ export interface ShippingAddress {
   address: string;
   phone: string;
 }
-export const ENV_BE = process.env.HOST || "http://localhost:8000";
+export const ENV_BE = process.env.REACT_APP_HOST || "http://localhost:8000";
 
 export const convertPriceToVND = new Intl.NumberFormat("vi-VN", {
   style: "currency",

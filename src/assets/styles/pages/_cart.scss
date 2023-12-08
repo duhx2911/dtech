@@ -1,0 +1,102 @@
+.cart-page {
+  background-color: #f5f5f7;
+}
+.cart-details {
+  margin-bottom: 30px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  .cart-option {
+    text-align: right;
+    margin-top: 20px;
+    Button {
+      margin-left: 20px;
+    }
+  }
+}
+.ant-table-thead > tr > th {
+  font-size: 16px;
+  font-weight: 700 !important;
+  font-family: "Montserrat";
+}
+.ant-table-cell {
+  background-color: white !important;
+  &::before {
+    position: unset !important;
+  }
+}
+.ant-table-tbody > tr > td {
+  border-bottom: none !important;
+  font-family: "Montserrat" !important;
+}
+.cart-payment {
+  width: 100%;
+  padding: 30px 20px;
+  background-color: white;
+  border-radius: 10px;
+  position: sticky;
+  top: 30px;
+
+  .order-subtotal,
+  .order-total,
+  .order-discount {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .order-subtotal,
+  .order-discount {
+    margin-bottom: 15px;
+    span {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 24px;
+      color: #86868b;
+    }
+    .price {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 21px;
+      color: #1d1d1f;
+    }
+  }
+  .order-total {
+    font-size: 16px;
+    font-weight: 700;
+    span {
+      color: #1d1d1f;
+    }
+    .price {
+      color: $primary-color;
+    }
+  }
+}
+.total-info {
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.cart-service {
+  margin-bottom: 20px;
+  display: flex;
+  input {
+    margin: 0 10px 0 0;
+  }
+}
+.order-button {
+  width: 100%;
+  margin-bottom: 15px;
+  Button {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: fit-content;
+  }
+}
+.note-ck {
+  text-align: left;
+  color: #e4434b;
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 10px;
+}

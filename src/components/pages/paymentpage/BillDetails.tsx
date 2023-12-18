@@ -1,8 +1,6 @@
 import { Form, Input, Radio } from "antd";
-import { useState } from "react";
 
-const BillDetails = () => {
-  const [payment, setPayment] = useState("");
+const BillDetails = ({ payment, setPayment }: any) => {
   return (
     <div className="billing-details">
       <div className="section-title">
@@ -45,12 +43,23 @@ const BillDetails = () => {
           onChange={(value) => {
             setPayment(value.target.value);
           }}
+          className="payment-radio-group"
         >
-          <Radio value="payOnDelivery">Thanh toán khi nhận hàng</Radio>
-          <Radio value="eWallet">Thanh toán qua ví điện tử</Radio>
-          <Radio value="masterCard">Thanh toán bằng Visa, Master</Radio>
+          <div className="payment-radio">
+            <Radio value="payOnDelivery">Nhận hàng thanh toán</Radio>
+          </div>
+
+          <div className="payment-radio">
+            <Radio value="paypal">Ví Paypal</Radio>
+            <img src="/images/paypal_logo.png" alt="Logo Paypal" />
+          </div>
+          <div className="payment-radio">
+            <Radio value="masterCard">Visa, Master</Radio>
+            <img src="/images/visa_logo.png" alt="Logo Visa" />
+          </div>
         </Radio.Group>
       </Form.Item>
+      {/* {payment === "paypal" ? <PaymentPaypalForm /> : null} */}
     </div>
   );
 };

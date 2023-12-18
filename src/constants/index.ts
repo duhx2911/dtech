@@ -24,9 +24,10 @@ export interface ShippingAddress {
   address: string;
   phone: string;
 }
-export const ENV_BE = process.env.REACT_APP_HOST || "http://localhost:8000";
+export const ENV_BE = "http://localhost:8000";
+// export const ENV_BE = process.env.REACT_APP_HOST || "http://localhost:8000";
 
-export const convertPriceToVND = new Intl.NumberFormat("vi-VN", {
+export const convertPriceToVND = new Intl.NumberFormat("en-US", {
   style: "currency",
-  currency: "VND",
+  currency: "USD",
 });

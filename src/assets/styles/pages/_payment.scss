@@ -82,3 +82,30 @@
   font-weight: 600;
   margin-bottom: 20px;
 }
+.payment-radio-group {
+  display: flex;
+  gap: 10px;
+}
+.payment-radio {
+  border: 1px solid $gray-100;
+  padding: 15px 20px;
+  border-radius: 10px;
+  flex: 1;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+  img {
+    width: 30px;
+  }
+}
+
+/*===============
+  Order success
+=================*/
+.payment-paypal {
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 20px;
+}

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ENV_BE, convertPriceToVND } from "../../../constants";
 
-const YourOrder = ({ handleSetFeeDetail }: any) => {
+const YourOrder = ({ handleSetFeeDetail, payment }: any) => {
   const [totalfee, setTotalFee] = useState(0);
   const [discount, setDiscount] = useState(0);
   const cartItems: any = useSelector<any>((state) => state.cart.cartItems);
@@ -12,7 +12,6 @@ const YourOrder = ({ handleSetFeeDetail }: any) => {
     (total: number, crrval: any) => total + parseInt(crrval.price) * crrval.sl,
     0
   );
-
   const getVoucher = async () => {
     const code = (document.getElementById("voucherCode") as HTMLInputElement)
       .value;
@@ -102,6 +101,7 @@ const YourOrder = ({ handleSetFeeDetail }: any) => {
           </div>
         </div>
       </div>
+
       <button style={{ width: "100%" }} className="primary-btn" type="submit">
         Đặt hàng
       </button>

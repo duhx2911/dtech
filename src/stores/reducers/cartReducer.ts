@@ -33,9 +33,7 @@ const cartReducer = (
       } else {
         return {
           ...state,
-          cartItems: state.cartItems.filter(
-            (item) => item.id !== action.cartItem.id
-          ),
+          cartItems: [...state.cartItems, action.cartItem],
         };
       }
     }

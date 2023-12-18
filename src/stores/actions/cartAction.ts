@@ -12,12 +12,14 @@ export const addToCart =
   (id: number, sl: number) =>
   async (dispatch: AppDispatch, getState: () => RootState) => {
     const response = await axios.get(`${ENV_BE}/products/${id}`);
+    console.log(response);
     if (response.status === 200) {
       if (response.data.status === "success") {
         dispatch({
           type: ADD_PRODUCT_CART,
           cartItem: { ...response.data.data[0], sl: sl },
         });
+        console.log("check", getState().cart.cartItems);
         localStorage.setItem(
           "cartItems",
           JSON.stringify(getState().cart.cartItems)

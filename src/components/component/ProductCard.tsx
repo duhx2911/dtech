@@ -1,6 +1,38 @@
 import { Products, convertPriceToVND } from "../../constants";
+import store from "../../stores";
+import { addToCart } from "../../stores/actions/cartAction";
 
 const ProductCard = ({ item }: { item: Products }) => {
+  // const addToCart = (product: any) => {
+  //   let cartItems: any = [];
+  //   if (window.localStorage.getItem("cartItems")) {
+  //     cartItems = JSON.parse(window.localStorage.getItem("cartItems")!);
+  //   }
+  //   if (product) {
+  //     const recordCart = cartItems.filter(
+  //       (record: any) => record.id === product.id
+  //     );
+  //     // console.log(recordCart);
+  //     if (recordCart.length) {
+  //       const newList = cartItems.map((record: any) => {
+  //         if (record.id === product.id) {
+  //           return {
+  //             ...product,
+  //             sl: record.sl + 1,
+  //           };
+  //         }
+  //         return record;
+  //       });
+  //       localStorage.setItem("cartItems", JSON.stringify(newList));
+  //       // console.log("newList:", newList);
+  //     } else {
+  //       const cartItem = { ...product, sl: 1 };
+  //       const newList = [...cartItems, cartItem];
+  //       localStorage.setItem("cartItems", JSON.stringify(newList));
+  //       // console.log("newList:", newList);
+  //     }
+  //   }
+  // };
   return (
     <div className="product">
       <div className="product-img">
@@ -45,7 +77,12 @@ const ProductCard = ({ item }: { item: Products }) => {
         </div>
       </div>
       <div className="add-to-cart">
-        <button className="add-to-cart-btn">
+        <button
+          className="add-to-cart-btn"
+          onClick={() => {
+            store.dispatch(addToCart(item.id, 1));
+          }}
+        >
           <i className="fa fa-shopping-cart"></i> thêm vào giỏ hàng
         </button>
       </div>

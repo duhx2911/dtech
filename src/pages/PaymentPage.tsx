@@ -13,6 +13,7 @@ import { removeCart } from "../stores/actions/cartAction";
 const PaymentPage = () => {
   const navigate = useNavigate();
   const [feeDetail, setFeeDetail] = useState({});
+  const [payment, setPayment] = useState("");
   const cartItems: any = useSelector<any>((state) => state.cart.cartItems);
   const handleSetFeeDetail = (
     totalPrice: number,
@@ -29,11 +30,20 @@ const PaymentPage = () => {
   };
   const onFinish = async (value: any) => {
     const orderCode = "DTOD" + Date.now();
-    value = { ...value, ...feeDetail, orderCode: orderCode };
+    if (value.paymentMethod === "paypal") {
+      value = {
+        ...value,
+        ...feeDetail,
+        orderCode: orderCode,
+        status: "chờ thanh toán",
+      };
+    } else {
+      value = { ...value, ...feeDetail, orderCode: orderCode };
+    }
     const orderRes = await axios.post(`${ENV_BE}/order`, value);
     if (orderRes.status === 200) {
       if (orderRes.data.status === "success") {
-        cartItems.map(async (item: any) => {
+        await cartItems.map(async (item: any) => {
           const dataOrderDetail = {
             orderCode: orderCode,
             idOrder: orderRes.data.data.id,
@@ -47,9 +57,16 @@ const PaymentPage = () => {
           if (orderDetailRes.status === 200) {
             if (orderDetailRes.data.status === "success") {
               store.dispatch(removeCart());
-              navigate("/ket-qua", { state: { orderCode: orderCode } });
             }
           }
+        });
+        navigate("/ket-qua", {
+          state: {
+            id: orderRes.data.data.id,
+            orderCode: orderCode,
+            payment: value.paymentMethod,
+            cartItems: cartItems,
+          },
         });
       }
     }
@@ -65,10 +82,13 @@ const PaymentPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-8">
-              <BillDetails />
+              <BillDetails setPayment={setPayment} payment={payment} />
             </div>
             <div className="col-md-4">
-              <YourOrder handleSetFeeDetail={handleSetFeeDetail} />
+              <YourOrder
+                payment={payment}
+                handleSetFeeDetail={handleSetFeeDetail}
+              />
             </div>
           </div>
         </div>

@@ -112,7 +112,7 @@
         list-style: none;
         display: flex;
         padding: 0;
-        li {
+        a {
           padding: 10px 20px;
           font-size: 13px;
           color: $gray-400;
@@ -123,8 +123,14 @@
           cursor: pointer;
           box-sizing: border-box;
         }
-        li:hover {
+        a:hover {
           border: solid 1px $primary-color;
+          color: $primary-color;
+          box-sizing: border-box;
+        }
+        .active {
+          border: solid 1px $primary-color;
+          color: $primary-color;
           box-sizing: border-box;
         }
       }
@@ -342,6 +348,18 @@
   }
 
   /*-- Review Form --*/
+  .review-form-hidden {
+    position: relative;
+    .review-form {
+      pointer-events: none;
+      opacity: 0.2;
+    }
+    .review-login {
+      position: absolute;
+
+      z-index: 99;
+    }
+  }
 
   .review-form .input {
     margin-bottom: 15px;

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { Result, message } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { ENV_BE } from "../constants";
+
 declare global {
   interface Window {
     paypal: any;
@@ -11,73 +12,51 @@ declare global {
 const OrderSuccessPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [payment, setPayment] = useState("");
-  const totalCart = location.state.cartItems?.reduce(
-    (total: number, crrval: any) => total + parseInt(crrval.price) * crrval.sl,
-    0
-  );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const updateStatusOrder = async (orderCode: string) => {
+    const res = await axios.put(`${ENV_BE}/orderbycode/${orderCode}`, {
+      status: "chờ giao hàng",
+    });
+  };
   useEffect(() => {
-    if (location.state.payment === "paypal") {
-      setPayment(location.state.payment);
+    if (searchParams && searchParams.get("vnp_ResponseCode") === "00") {
+      updateStatusOrder(searchParams.get("vnp_TxnRef")!);
     }
-  }, []);
-  useEffect(() => {
-    if (payment === "paypal") {
-      window.paypal
-        .Buttons({
-          createOrder: (data: any, actions: any, err: any) => {
-            return actions.order.create({
-              intent: "CAPTURE",
-              purchase_units: [
-                {
-                  description: location.state.orderCode,
-                  amount: {
-                    currency_code: "USD",
-                    value: totalCart,
-                  },
-                },
-              ],
-            });
-          },
-          onApprove: async (data: any, actions: any) => {
-            const order = await actions.order.capture();
-            if (order.status === "COMPLETED") {
-              const updateOrder = await axios.put(
-                `${ENV_BE}/order/${location.state.id}`,
-                { status: "chờ giao hàng" }
-              );
-              if (updateOrder.status === 200) {
-                if (updateOrder.data.status === "success") {
-                  setPayment("");
-                  message.success("Thanh toán thành công");
-                }
-              }
-            }
-          },
-          onError: (err: any) => {
-            console.log(err);
-          },
-        })
-        .render("#paypal-button-container");
-    }
-  }, [payment]);
+  }, [searchParams]);
   return (
     <>
-      {payment === "paypal" ? (
-        <div className="payment-paypal">
-          <div id="paypal-button-container"></div>
-        </div>
-      ) : null}
-      <Result
-        status="success"
-        title="Đặt hàng thành công"
-        subTitle={`Mã đơn hàng của bạn là: ${location.state.orderCode}. Hãy lưu lại để được hỗ trợ nếu gặp vấn đề về đơn hàng!`}
-        extra={[
-          <button className="primary-btn" onClick={() => navigate("/")}>
-            Về trang chủ
-          </button>,
-        ]}
-      />
+      {(searchParams && searchParams.get("vnp_ResponseCode") === "00") ||
+      location.state ? (
+        <Result
+          status="success"
+          title="Đặt hàng thành công"
+          subTitle={`Mã đơn hàng của bạn là: ${
+            location.state
+              ? location.state.orderCode
+              : searchParams.get("vnp_TxnRef")
+          }. Hãy lưu lại để được hỗ trợ nếu gặp vấn đề về đơn hàng!`}
+          extra={[
+            <button className="primary-btn" onClick={() => navigate("/")}>
+              Về trang chủ
+            </button>,
+          ]}
+        />
+      ) : (
+        <Result
+          status="error"
+          title="Thanh toán thất bại"
+          subTitle={`Mã đơn hàng của bạn là: ${
+            location.state
+              ? location.state.orderCode
+              : searchParams.get("vnp_TxnRef")
+          }. Hãy lưu lại để được hỗ trợ nếu gặp vấn đề về đơn hàng!`}
+          extra={[
+            <button className="primary-btn" onClick={() => navigate("/")}>
+              Về trang chủ
+            </button>,
+          ]}
+        />
+      )}
     </>
   );
 };

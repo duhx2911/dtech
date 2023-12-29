@@ -6,16 +6,16 @@ const Newsletter = () => {
           <div className="col-md-12">
             <div className="newsletter">
               <p>
-                Sign Up for the <strong>NEWSLETTER</strong>
+                Đăng ký nhận <strong>Tin mới</strong>
               </p>
               <form>
                 <input
                   className="input"
                   type="email"
-                  placeholder="Enter Your Email"
+                  placeholder="Email của bạn"
                 />
                 <button className="newsletter-btn">
-                  <i className="fa fa-envelope"></i> Subscribe
+                  <i className="fa fa-envelope"></i> Đăng ký
                 </button>
               </form>
               <ul className="newsletter-follow">

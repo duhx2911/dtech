@@ -7,30 +7,32 @@
 	Main nav
 \*----------------------------*/
 
-.main-nav > li + li {
-  margin-left: 30px;
-}
+// .main-nav > li + li {
+//   margin-left: 30px;
+// }
 
 .main-nav > li > a {
-  padding: 20px 0px;
+  padding: 30px 15px;
+  color: $white;
 }
 
 .main-nav > li > a:hover,
 .main-nav > li > a:focus,
 .main-nav > li > a.active {
-  color: #d10024;
-  background-color: transparent;
+  // color: #d10024;
+  // background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.096);
 }
 
-.main-nav > li > a:after {
-  content: "";
-  display: block;
-  width: 0%;
-  height: 2px;
-  background-color: #d10024;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
+// .main-nav > li > a:after {
+//   content: "";
+//   display: block;
+//   width: 0%;
+//   height: 2px;
+//   background-color: #d10024;
+//   -webkit-transition: 0.2s all;
+//   transition: 0.2s all;
+// }
 
 .main-nav > li > a:hover:after,
 .main-nav > li > a:focus:after,

@@ -1,38 +1,11 @@
 /*=========================================================
 	02 -> HEADER
 ===========================================================*/
-
-/*----------------------------*\
-	Top header
-\*----------------------------*/
-
-#top-header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #1e1f29;
-}
-
-.header-links li {
-  display: inline-block;
-  margin-right: 15px;
-  font-size: 12px;
-}
-
-.header-links li:last-child {
-  margin-right: 0px;
-}
-
-.header-links li a {
-  color: #fff;
-}
-
-.header-links li a:hover {
-  color: #d10024;
-}
-
-.header-links li i {
-  color: #d10024;
-  margin-right: 5px;
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 /*----------------------------*\
@@ -40,8 +13,6 @@
   \*----------------------------*/
 
 #header {
-  padding-top: 15px;
-  padding-bottom: 15px;
   background-color: #15161d;
 }
 .is-sticky {
@@ -52,7 +23,11 @@
   z-index: 999;
   box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
 }
-
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .header-logo {
   float: left;
 }
@@ -114,7 +89,7 @@
 .header-ctn > div > a {
   display: block;
   position: relative;
-  width: 90px;
+  padding: 0 5px;
   text-align: center;
   color: #fff;
 }

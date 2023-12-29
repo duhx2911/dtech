@@ -9,7 +9,7 @@ const AppLayout = ({ children }: { children?: ReactNode }) => {
   return (
     <>
       <Header />
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       <main>
         <Outlet />
       </main>

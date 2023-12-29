@@ -54,8 +54,8 @@ const BillDetails = ({ payment, setPayment }: any) => {
             <img src="/images/paypal_logo.png" alt="Logo Paypal" />
           </div>
           <div className="payment-radio">
-            <Radio value="masterCard">Visa, Master</Radio>
-            <img src="/images/visa_logo.png" alt="Logo Visa" />
+            <Radio value="vnpay">Ví VNPAY</Radio>
+            <img src="/images/vnpay_logo.webp" alt="Logo Visa" />
           </div>
         </Radio.Group>
       </Form.Item>

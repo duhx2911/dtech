@@ -7,6 +7,7 @@ import CartPage from "../pages/CartPage";
 import LoginPage from "../pages/LoginPage";
 import PaymentPage from "../pages/PaymentPage";
 import OrderSuccessPage from "../pages/OrderSuccess";
+import SignupPage from "../pages/SignupPage";
 
 const AppBrowserRouter = () => {
   return (
@@ -19,6 +20,8 @@ const AppBrowserRouter = () => {
         <Route path="/dang-nhap" element={<LoginPage />} />
         <Route path="/thanh-toan" element={<PaymentPage />} />
         <Route path="/ket-qua" element={<OrderSuccessPage />} />
+        <Route path="/dang-nhap" element={<LoginPage />} />
+        <Route path="/dang-ky" element={<SignupPage />} />
       </Route>
     </Routes>
   );

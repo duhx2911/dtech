@@ -3,36 +3,6 @@ import store from "../../stores";
 import { addToCart } from "../../stores/actions/cartAction";
 
 const ProductCard = ({ item }: { item: Products }) => {
-  // const addToCart = (product: any) => {
-  //   let cartItems: any = [];
-  //   if (window.localStorage.getItem("cartItems")) {
-  //     cartItems = JSON.parse(window.localStorage.getItem("cartItems")!);
-  //   }
-  //   if (product) {
-  //     const recordCart = cartItems.filter(
-  //       (record: any) => record.id === product.id
-  //     );
-  //     // console.log(recordCart);
-  //     if (recordCart.length) {
-  //       const newList = cartItems.map((record: any) => {
-  //         if (record.id === product.id) {
-  //           return {
-  //             ...product,
-  //             sl: record.sl + 1,
-  //           };
-  //         }
-  //         return record;
-  //       });
-  //       localStorage.setItem("cartItems", JSON.stringify(newList));
-  //       // console.log("newList:", newList);
-  //     } else {
-  //       const cartItem = { ...product, sl: 1 };
-  //       const newList = [...cartItems, cartItem];
-  //       localStorage.setItem("cartItems", JSON.stringify(newList));
-  //       // console.log("newList:", newList);
-  //     }
-  //   }
-  // };
   return (
     <div className="product">
       <div className="product-img">
@@ -40,8 +10,11 @@ const ProductCard = ({ item }: { item: Products }) => {
           <img src={item.artwork} alt={item.productName} />
         </a>
         <div className="product-label">
-          <span className="sale">-30%</span>
-          <span className="new">Mới</span>
+          {item.discount_value > 0 ? (
+            <span className="sale">-{item.discount_value}%</span>
+          ) : null}
+          {/* <span className="sale">-30%</span> */}
+          {/* <span className="new">Mới</span> */}
         </div>
       </div>
       <div className="product-body">
@@ -49,10 +22,17 @@ const ProductCard = ({ item }: { item: Products }) => {
           <a href="/product">{item.productName}</a>
         </h3>
         <h4 className="product-price">
-          {convertPriceToVND.format(item.price)}{" "}
-          <del className="product-old-price">
+          {convertPriceToVND.format(
+            (item.price * (100 - item.discount_value)) / 100
+          )}{" "}
+          {/* <del className="product-old-price">
             {convertPriceToVND.format(item.listed_price)}
-          </del>
+          </del> */}
+          {item.discount_value > 0 ? (
+            <del className="product-old-price">
+              {convertPriceToVND.format(item.price)}
+            </del>
+          ) : null}
         </h4>
         <div className="product-rating">
           <i className="fa fa-star"></i>

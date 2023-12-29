@@ -1,48 +1,72 @@
+import { Button, Form, Input } from "antd";
+import store from "../stores";
+import { login } from "../stores/actions/loginAction";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 const LoginPage = () => {
+  const onFinish = (values: any) => {
+    store.dispatch(login(values.username, values.password));
+  };
+  const navigate = useNavigate();
+  const userLogin: any = useSelector<any>((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo && userInfo.accessToken) {
+      navigate("/");
+    }
+  }, [userInfo]);
   return (
     <div className="login-page">
       <div className="container">
         <div className="row">
           <div className="col-md-5">
-            <div className="login-content">
-              <h1>Đăng nhập</h1>
-
-              <form id="login-form">
-                <div className="form-group">
-                  <label htmlFor="username">Tên đăng nhập</label>
-                  <input
-                    className="input"
+            <div className="login-section">
+              <div className="login-header">Đăng nhập</div>
+              <div className="login-content">
+                <Form
+                  name="basic"
+                  wrapperCol={{ span: 24 }}
+                  style={{ maxWidth: 600 }}
+                  initialValues={{ remember: true }}
+                  onFinish={onFinish}
+                  autoComplete="off"
+                >
+                  <Form.Item
                     name="username"
-                    type="text"
-                    placeholder="Điền tên đăng nhập"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Mật khẩu</label>
-                  <input
-                    name="password"
-                    type="password"
-                    className="input"
-                    placeholder="Điền tên đăng nhập"
-                  />
-                </div>
-                <div className="form-group remember-forgot">
-                  <div className="remember-password">
-                    <input type="checkbox" name="rememberpass" />
-                    <label htmlFor="rememberpass">Nhớ mật khẩu</label>
-                  </div>
+                    rules={[
+                      {
+                        required: true,
+                        message: "Nhập email!",
+                      },
+                    ]}
+                  >
+                    <Input className="input" placeholder="Email" />
+                  </Form.Item>
 
-                  <a href="/#">Quên mật khẩu</a>
-                </div>
-                <div className="form-group">
-                  <button className="primary-btn">Đăng nhập</button>
-                </div>
-                <div className="form-group">
-                  <p>
-                    Bạn chưa có tài khoản? <a href="/#">Tạo tài khoản ngay</a>
-                  </p>
-                </div>
-              </form>
+                  <Form.Item
+                    name="password"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Nhập mật khẩu!",
+                      },
+                    ]}
+                  >
+                    <Input.Password className="input" placeholder="Mật khẩu" />
+                  </Form.Item>
+
+                  <div style={{ textAlign: "center" }}>
+                    <button className="primary-btn">Đăng nhập</button>
+                  </div>
+                  <div className="form-group to-signup">
+                    <p>Bạn chưa có tài khoản?</p>
+                    <a href="/dang-ky">Đăng ký ngay</a>
+                  </div>
+                </Form>
+              </div>
             </div>
           </div>
           <div className="col-xl-6">

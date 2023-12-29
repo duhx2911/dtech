@@ -29,7 +29,7 @@ const ProductPage = () => {
             <OverView data={data} />
           </div>
         </div>
-        <TabNav />
+        <TabNav dataProduct={data} />
         <RelateProduct />
       </div>
     </div>

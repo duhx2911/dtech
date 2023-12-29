@@ -1,9 +1,18 @@
-const Review = () => {
-  const handleSubmit = (event: any) => {
-    const formData = new FormData(event.currentTarget);
-    event.preventDefault();
-    console.log(formData.get("comment"));
+import { useEffect } from "react";
+import store from "../../../../stores";
+import { getReview } from "../../../../stores/actions/reviewAction";
+import ReviewForm from "./ReviewForm";
+import { useSelector } from "react-redux";
+import { Reviews, dateFormat } from "../../../../constants";
+
+const Review = ({ dataProduct }: any) => {
+  const fetchData = async () => {
+    store.dispatch(getReview());
   };
+  const reviews: any = useSelector<any>((state) => state.reviewReducer.reviews);
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div id="tab3" className="tab-pane fade in">
       <div className="row">
@@ -92,66 +101,26 @@ const Review = () => {
         <div className="col-xl-6">
           <div id="reviews">
             <ul className="reviews">
-              <li>
-                <div className="review-heading">
-                  <h5 className="name">John</h5>
-                  <p className="date">27 DEC 2018, 8:0 PM</p>
-                  <div className="review-rating">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-o empty"></i>
-                  </div>
-                </div>
-                <div className="review-body">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="review-heading">
-                  <h5 className="name">John</h5>
-                  <p className="date">27 DEC 2018, 8:0 PM</p>
-                  <div className="review-rating">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-o empty"></i>
-                  </div>
-                </div>
-                <div className="review-body">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="review-heading">
-                  <h5 className="name">John</h5>
-                  <p className="date">27 DEC 2018, 8:0 PM</p>
-                  <div className="review-rating">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-o empty"></i>
-                  </div>
-                </div>
-                <div className="review-body">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua
-                  </p>
-                </div>
-              </li>
+              {reviews.map((item: Reviews) => {
+                return (
+                  <li key={item.id}>
+                    <div className="review-heading">
+                      <h5 className="name">{item.username}</h5>
+                      <p className="date">{dateFormat(item.create_at)}</p>
+                      <div className="review-rating">
+                        {new Array(Number(item.rate))
+                          .fill(null)
+                          .map((_, index) => {
+                            return <i className="fa fa-star" key={index}></i>;
+                          })}
+                      </div>
+                    </div>
+                    <div className="review-body">
+                      <p>{item.content}</p>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
             <ul className="reviews-pagination">
               <li className="active">1</li>
@@ -174,44 +143,7 @@ const Review = () => {
         </div>
 
         <div className="col-xl-3">
-          <div id="review-form">
-            <form className="review-form" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                className="input"
-                name="nameInput"
-                placeholder="Tên của bạn"
-              />
-              <input
-                type="email"
-                name="emailInput"
-                className="input"
-                placeholder="Email của bạn"
-              />
-              <textarea
-                name="comment"
-                className="input"
-                cols={30}
-                rows={10}
-              ></textarea>
-              <div className="input-rating">
-                <span>Your Rating: </span>
-                <div className="stars">
-                  <input id="star5" name="rating" value="5" type="radio" />
-                  <label htmlFor="star5"></label>
-                  <input id="star4" name="rating" value="4" type="radio" />
-                  <label htmlFor="star4"></label>
-                  <input id="star3" name="rating" value="3" type="radio" />
-                  <label htmlFor="star3"></label>
-                  <input id="star2" name="rating" value="2" type="radio" />
-                  <label htmlFor="star2"></label>
-                  <input id="star1" name="rating" value="1" type="radio" />
-                  <label htmlFor="star1"></label>
-                </div>
-              </div>
-              <button className="primary-btn">Submit</button>
-            </form>
-          </div>
+          <ReviewForm dataProduct={dataProduct} />
         </div>
       </div>
     </div>

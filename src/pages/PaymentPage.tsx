@@ -12,7 +12,12 @@ import { removeCart } from "../stores/actions/cartAction";
 
 const PaymentPage = () => {
   const navigate = useNavigate();
-  const [feeDetail, setFeeDetail] = useState({});
+  const [feeDetail, setFeeDetail] = useState({
+    totalPrice: 0,
+    totalPay: 0,
+    shippingFee: 0,
+    discount: 0,
+  });
   const [payment, setPayment] = useState("");
   const cartItems: any = useSelector<any>((state) => state.cart.cartItems);
   const handleSetFeeDetail = (
@@ -30,7 +35,7 @@ const PaymentPage = () => {
   };
   const onFinish = async (value: any) => {
     const orderCode = "DTOD" + Date.now();
-    if (value.paymentMethod === "paypal") {
+    if (value.paymentMethod === "paypal" || value.paymentMethod === "vnpay") {
       value = {
         ...value,
         ...feeDetail,
@@ -60,14 +65,21 @@ const PaymentPage = () => {
             }
           }
         });
-        navigate("/ket-qua", {
-          state: {
-            id: orderRes.data.data.id,
+        if (value.paymentMethod === "vnpay") {
+          const res = await axios.post(`${ENV_BE}/payment/create_payment_url`, {
+            amount: feeDetail.totalPay,
+            bankCode: "",
+            language: "vn",
             orderCode: orderCode,
-            payment: value.paymentMethod,
-            cartItems: cartItems,
-          },
-        });
+          });
+          window.location = res.data;
+        } else {
+          navigate("/ket-qua", {
+            state: {
+              orderCode: orderCode,
+            },
+          });
+        }
       }
     }
   };

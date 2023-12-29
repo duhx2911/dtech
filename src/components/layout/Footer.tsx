@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="row">
               <div className="col-md-3 col-xs-6">
                 <div className="footer">
-                  <h3 className="footer-title">About Us</h3>
+                  <h3 className="footer-title">Về chúng tôi</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                     sed do eiusmod tempor incididunt ut.
@@ -16,17 +16,17 @@ const Footer = () => {
                   <ul className="footer-links">
                     <li>
                       <a href="/#">
-                        <i className="fa fa-map-marker"></i>1734 Stonecoal Road
+                        <i className="fa fa-map-marker"></i>175 Tây Sơn
                       </a>
                     </li>
                     <li>
                       <a href="/#">
-                        <i className="fa fa-phone"></i>+021-95-51-84
+                        <i className="fa fa-phone"></i>+84-123456789
                       </a>
                     </li>
                     <li>
                       <a href="/#">
-                        <i className="fa fa-envelope"></i>email@email.com
+                        <i className="fa fa-envelope"></i>info@dtech.vn
                       </a>
                     </li>
                   </ul>
@@ -35,22 +35,25 @@ const Footer = () => {
 
               <div className="col-md-3 col-xs-6">
                 <div className="footer">
-                  <h3 className="footer-title">Categories</h3>
+                  <h3 className="footer-title">Danh mục</h3>
                   <ul className="footer-links">
                     <li>
-                      <a href="/#">Hot deals</a>
+                      <a href="/iphone">iPhone</a>
                     </li>
                     <li>
-                      <a href="/#">Laptops</a>
+                      <a href="/ipad">iPad</a>
                     </li>
                     <li>
-                      <a href="/#">Smartphones</a>
+                      <a href="/macbook">Macbook</a>
                     </li>
                     <li>
-                      <a href="/#">Cameras</a>
+                      <a href="/watch">Watch</a>
                     </li>
                     <li>
-                      <a href="/#">Accessories</a>
+                      <a href="/am-thanh">Âm thanh</a>
+                    </li>
+                    <li>
+                      <a href="/phu-kien">Phụ kiện</a>
                     </li>
                   </ul>
                 </div>
@@ -60,22 +63,20 @@ const Footer = () => {
 
               <div className="col-md-3 col-xs-6">
                 <div className="footer">
-                  <h3 className="footer-title">Information</h3>
+                  <h3 className="footer-title">Thông tin</h3>
                   <ul className="footer-links">
                     <li>
-                      <a href="/#">About Us</a>
+                      <a href="/#">Về chúng tôi</a>
                     </li>
                     <li>
-                      <a href="/#">Contact Us</a>
+                      <a href="/#">Liên hệ</a>
                     </li>
                     <li>
-                      <a href="/#">Privacy Policy</a>
+                      <a href="/#">Chính sách bảo mật</a>
                     </li>
+
                     <li>
-                      <a href="/#">Orders and Returns</a>
-                    </li>
-                    <li>
-                      <a href="/#">Terms & Conditions</a>
+                      <a href="/#">Điều khoản</a>
                     </li>
                   </ul>
                 </div>
@@ -83,22 +84,19 @@ const Footer = () => {
 
               <div className="col-md-3 col-xs-6">
                 <div className="footer">
-                  <h3 className="footer-title">Service</h3>
+                  <h3 className="footer-title">Dịch vụ</h3>
                   <ul className="footer-links">
                     <li>
-                      <a href="/#">My Account</a>
+                      <a href="/dang-nhap">Tài khoản</a>
                     </li>
                     <li>
-                      <a href="/#">View Cart</a>
+                      <a href="/gio-hang">Giỏ hàng</a>
                     </li>
                     <li>
-                      <a href="/#">Wishlist</a>
+                      <a href="/yeu-thich">Yêu thích</a>
                     </li>
                     <li>
-                      <a href="/#">Track My Order</a>
-                    </li>
-                    <li>
-                      <a href="/#">Help</a>
+                      <a href="/#">Trợ giúp</a>
                     </li>
                   </ul>
                 </div>
@@ -144,9 +142,7 @@ const Footer = () => {
                   </li>
                 </ul>
                 <span className="copyright">
-                  Copyright &copy;
-                  <script>document.write(new Date().getFullYear());</script> All
-                  rights reserved
+                  &copy; 2023 Công ty Cổ phần đầu tư công nghệ Dtech
                 </span>
               </div>
             </div>

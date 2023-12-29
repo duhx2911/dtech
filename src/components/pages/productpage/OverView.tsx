@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { convertPriceToVND } from "../../../constants";
 
 const OverView = ({ data }: any) => {
@@ -78,19 +79,27 @@ const OverView = ({ data }: any) => {
           <div className="current-price">
             {convertPriceToVND.format(data.price!)}
           </div>
-          <div className="old-price">
+          {/* <div className="old-price">
             <del>{convertPriceToVND.format(data.listed_price!)}</del>
-          </div>
+          </div> */}
         </div>
 
         <div className="attributes">
           <label className="text-prompt">Dung lượng</label>
           <div className="storage-capacity">
             <ul>
-              <li>128GB</li>
-              <li>256GB</li>
-              <li>512GB</li>
-              <li>1TB</li>
+              <li>
+                <NavLink to="/iphone-14-pro-128">128GB</NavLink>
+              </li>
+              <li>
+                <NavLink to="/iphone-14-pro-256">256GB</NavLink>
+              </li>
+              <li>
+                <NavLink to="/iphone-14-pro-512">512GB</NavLink>
+              </li>
+              <li>
+                <NavLink to="/iphone-14-pro-1024">1TB</NavLink>
+              </li>
             </ul>
           </div>
           <label className="text-prompt">Màu sắc</label>

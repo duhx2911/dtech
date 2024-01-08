@@ -77,11 +77,14 @@ const OverView = ({ data }: any) => {
         {/* Price */}
         <div className="prices">
           <div className="current-price">
-            {convertPriceToVND.format(data.price!)}
+            {convertPriceToVND.format(data.sales!)}
           </div>
-          {/* <div className="old-price">
-            <del>{convertPriceToVND.format(data.listed_price!)}</del>
-          </div> */}
+
+          {data.discount_value > 0 ? (
+            <div className="old-price">
+              <del>{convertPriceToVND.format(data.price!)}</del>
+            </div>
+          ) : null}
         </div>
 
         <div className="attributes">

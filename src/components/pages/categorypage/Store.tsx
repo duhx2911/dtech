@@ -1,24 +1,32 @@
+import { useLocation } from "react-router-dom";
 import ProductCard from "./../../component/ProductCard";
+
+import { ENV_BE, Products } from "../../../constants";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const StoreCategory = () => {
+  const location = useLocation();
+  const [dataProduct, setDataProduct] = useState([]);
+
+  const fetchData = async (path: string) => {
+    let res = await axios.get(`${ENV_BE}/productCate${path}`);
+    let data = res && res.data.data ? res.data.data : [];
+    setDataProduct(data);
+  };
+  useEffect(() => {
+    fetchData(location.pathname);
+  }, [location.pathname]);
+
   return (
-    <div id="store" className="col-md-9">
+    <div id="store">
       <div className="store-filter clearfix">
         <div className="store-sort">
-          <label>
-            Sort By:
-            <select className="input-select">
-              <option value="0">Popular</option>
-              <option value="1">Position</option>
-            </select>
-          </label>
-
-          <label>
-            Show:
-            <select className="input-select">
-              <option value="0">20</option>
-              <option value="1">50</option>
-            </select>
-          </label>
+          <label>Sắp xếp:</label>
+          <select className="input-select">
+            <option value="0">Mặc định</option>
+            <option value="1">Giá tăng dần</option>
+            <option value="2">Giá giảm dần</option>
+          </select>
         </div>
         <ul className="store-grid">
           <li className="active">
@@ -33,17 +41,16 @@ const StoreCategory = () => {
       </div>
 
       <div className="row">
-        {new Array(9).fill(null).map((_, index) => {
+        {dataProduct.map((item: Products) => {
           return (
-            <div className="col-xl-4" key={index}>
-              {/* <ProductCard /> */}
+            <div className="col-xl-3" key={item.id}>
+              <ProductCard item={item} />
             </div>
           );
         })}
       </div>
 
       <div className="store-filter clearfix">
-        <span className="store-qty">Showing 20-100 products</span>
         <ul className="store-pagination">
           <li className="active">1</li>
           <li>

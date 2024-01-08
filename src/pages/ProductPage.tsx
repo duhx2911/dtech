@@ -11,6 +11,7 @@ const ProductPage = () => {
   const location = useLocation();
 
   const { data: dataProduct } = useFetch(`product${location.pathname}`);
+  console.log(dataProduct);
   const [data, setData] = useState({});
   useEffect(() => {
     if (dataProduct && dataProduct.length) {

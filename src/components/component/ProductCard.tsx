@@ -22,9 +22,7 @@ const ProductCard = ({ item }: { item: Products }) => {
           <a href="/product">{item.productName}</a>
         </h3>
         <h4 className="product-price">
-          {convertPriceToVND.format(
-            (item.price * (100 - item.discount_value)) / 100
-          )}{" "}
+          {convertPriceToVND.format(item.sales)}{" "}
           {/* <del className="product-old-price">
             {convertPriceToVND.format(item.listed_price)}
           </del> */}

@@ -54,6 +54,7 @@ const PaymentPage = () => {
             idOrder: orderRes.data.data.id,
             idProduct: item.id,
             sl: item.sl,
+            price: item.sales,
           };
           const orderDetailRes = await axios.post(
             `${ENV_BE}/orderDetail`,

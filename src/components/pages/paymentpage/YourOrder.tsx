@@ -9,7 +9,7 @@ const YourOrder = ({ handleSetFeeDetail, payment }: any) => {
   const [discount, setDiscount] = useState(0);
   const cartItems: any = useSelector<any>((state) => state.cart.cartItems);
   const totalCart = cartItems?.reduce(
-    (total: number, crrval: any) => total + parseInt(crrval.price) * crrval.sl,
+    (total: number, crrval: any) => total + parseInt(crrval.sales) * crrval.sl,
     0
   );
   const getVoucher = async () => {
@@ -51,7 +51,18 @@ const YourOrder = ({ handleSetFeeDetail, payment }: any) => {
                   <span>{item.productName}</span>
                 </div>
                 <div className="order-price">
-                  {convertPriceToVND.format(item.price)}
+                  {convertPriceToVND.format(item.sales)}{" "}
+                  {item.discount_value > 0 ? (
+                    <del
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 500,
+                        color: "#b6b0b0",
+                      }}
+                    >
+                      {convertPriceToVND.format(item.price)}
+                    </del>
+                  ) : null}
                 </div>
               </div>
               <div className="order-quantity">x{item.sl}</div>

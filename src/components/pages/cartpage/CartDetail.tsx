@@ -52,8 +52,8 @@ const CartDetail = ({ cartItems }: any) => {
     },
     {
       title: "Giá bán",
-      dataIndex: "price",
-      key: "price",
+      dataIndex: "sales",
+      key: "sales",
       render: (value) => <h3>{convertPriceToVND.format(value)}</h3>,
     },
     {

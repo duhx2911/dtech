@@ -10,7 +10,7 @@ const CartPage = () => {
   const cartItems: any = useSelector<any>((state) => state.cart.cartItems);
   // const cartItems = JSON.parse(window.localStorage.getItem("cartItems")!);
   const totalCart = cartItems?.reduce(
-    (total: number, crrval: any) => total + parseInt(crrval.price) * crrval.sl,
+    (total: number, crrval: any) => total + parseInt(crrval.sales) * crrval.sl,
     0
   );
   const shippingAdd: any = useSelector<any>((state) => state.cart.shipping);

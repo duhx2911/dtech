@@ -11,6 +11,7 @@ export interface Products {
   quantity: number;
   slug: string;
   discount_value: number;
+  sales: number;
 }
 
 export interface ImageProduct {

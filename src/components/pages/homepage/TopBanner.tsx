@@ -12,10 +12,9 @@ const TopBanner = () => {
                 <h3>
                   iPhone
                   <br />
-                  Collection
                 </h3>
-                <a href="/#" className="cta-btn">
-                  Shop now <i className="fa fa-arrow-circle-right"></i>
+                <a href="/iphone" className="cta-btn">
+                  Mua ngay <i className="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div>
@@ -30,10 +29,9 @@ const TopBanner = () => {
                 <h3>
                   Macbook
                   <br />
-                  Collection
                 </h3>
-                <a href="/#" className="cta-btn">
-                  Shop now <i className="fa fa-arrow-circle-right"></i>
+                <a href="/macbook" className="cta-btn">
+                  Mua ngay <i className="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div>
@@ -48,10 +46,9 @@ const TopBanner = () => {
                 <h3>
                   iPad
                   <br />
-                  Collection
                 </h3>
-                <a href="/#" className="cta-btn">
-                  Shop now <i className="fa fa-arrow-circle-right"></i>
+                <a href="/ipad" className="cta-btn">
+                  Mua ngay <i className="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div>

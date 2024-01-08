@@ -6,7 +6,6 @@ const CategoryPage = () => {
     <div className="section">
       <div className="container">
         <div className="row">
-          <Aside />
           <StoreCategory />
         </div>
       </div>

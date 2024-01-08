@@ -19,7 +19,7 @@ export const addToCart =
           type: ADD_PRODUCT_CART,
           cartItem: { ...response.data.data[0], sl: sl },
         });
-        console.log("check", getState().cart.cartItems);
+        // console.log("check", getState().cart.cartItems);
         localStorage.setItem(
           "cartItems",
           JSON.stringify(getState().cart.cartItems)

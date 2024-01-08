@@ -14,7 +14,12 @@ const AppBrowserRouter = () => {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/danh-muc" element={<CategoryPage />} />
+        <Route path="/iphone" element={<CategoryPage />} />
+        <Route path="/ipad" element={<CategoryPage />} />
+        <Route path="/macbook" element={<CategoryPage />} />
+        <Route path="/watch" element={<CategoryPage />} />
+        <Route path="/am-thanh" element={<CategoryPage />} />
+        <Route path="/phu-kien" element={<CategoryPage />} />
         <Route path="/:slugproduct" element={<ProductPage />} />
         <Route path="/gio-hang" element={<CartPage />} />
         <Route path="/dang-nhap" element={<LoginPage />} />

@@ -1,0 +1,37 @@
+/*----------------------------*\
+	Buttons
+\*----------------------------*/
+
+.primary-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #d10024;
+  border: none;
+  border-radius: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+.btn-outline {
+  background-color: #fff;
+  border: 1px solid #d10024;
+  color: #d10024;
+  &:hover,
+  &:focus {
+    background-color: #d10024;
+    color: #fff;
+  }
+}
+.btn-square {
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.primary-btn:hover,
+.primary-btn:focus {
+  opacity: 0.9;
+  color: #fff;
+}

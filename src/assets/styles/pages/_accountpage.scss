@@ -1,0 +1,46 @@
+.account-page {
+  margin-top: 30px;
+
+  .account-tab {
+    width: 20px;
+    margin-right: 10px;
+  }
+  /*=====================
+    PROFILE TAB START
+    =====================*/
+  .profile-tab {
+    .profile-info {
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      padding: 20px 0;
+      border-radius: 8px;
+      .profile-fullname {
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .profile-username {
+        font-style: italic;
+        font-weight: 500;
+      }
+      .profile-image {
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+        .edit-avatar {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+    .profile-form {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  }
+  /*=====================
+    PROFILE TAB END
+    =====================*/
+}

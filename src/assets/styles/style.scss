@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+@import "./vendor/bootstrap3.min";
+@import "./vendor/bootstrap-grid.min";
+// @import "./vendor/nouislider.min";
+// @import "./vendor/font-awesome.min";
+
+@import "./abstracts/variables";
+
+@import "./base/typography";
+@import "./base/reset";
+
+@import "./components/button";
+@import "./components/input";
+@import "./components/section";
+@import "./components/breadcrumb";
+@import "./components/productCard";
+@import "./components/inputnumber";
+
+@import "./layouts/header";
+@import "./layouts/navigation";
+@import "./layouts/newsletter";
+@import "./layouts/footer";
+
+@import "./pages/homepage";
+@import "./pages/category";
+@import "./pages/product";
+@import "./pages/cart";
+@import "./pages/login";
+@import "./pages/payment";
+@import "./pages/accountpage";

@@ -1,0 +1,41 @@
+/* =============================================
+Login
+================================================ */
+
+.login-page {
+  margin-top: 30px;
+  .login-section {
+    border-radius: 8px;
+    box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
+  }
+  .login-header {
+    background-color: $primary-color;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    padding: 20px 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .login-content {
+    padding: 20px;
+
+    label {
+      margin-bottom: 5px;
+    }
+    .remember-forgot {
+      text-align: end;
+    }
+  }
+  .login-bg {
+    text-align: center;
+    img {
+      width: 80%;
+    }
+  }
+  .to-signup {
+    margin-top: 50px;
+    text-align: center;
+  }
+}

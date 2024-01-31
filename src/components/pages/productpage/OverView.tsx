@@ -101,7 +101,7 @@ const OverView = ({ data, productcolor, getImageDetail }: any) => {
         </div>
 
         <div className="attributes">
-          <label className="text-prompt">Dung lượng</label>
+          {/* <label className="text-prompt">Dung lượng</label>
           <div className="storage-capacity">
             <ul>
               <li>
@@ -117,7 +117,7 @@ const OverView = ({ data, productcolor, getImageDetail }: any) => {
                 <NavLink to="/iphone-14-pro-1024">1TB</NavLink>
               </li>
             </ul>
-          </div>
+          </div> */}
           <label className="text-prompt">Màu sắc</label>
           <div className="color-picker">
             <ul>

@@ -1,7 +1,12 @@
 import axios from "axios";
 import { AppDispatch } from "..";
 import { ENV_BE } from "../../constants";
-import { IPAD_LIST, IPHONE_LIST, NEW_PRODUCT_LIST } from "../constants";
+import {
+  IPAD_LIST,
+  IPHONE_LIST,
+  NEW_PRODUCT_LIST,
+  PRODUCT_LIST,
+} from "../constants";
 
 const getNewProduct = () => async (dispatch: AppDispatch) => {
   const response = await axios.get(`${ENV_BE}/newproducts`);
@@ -9,6 +14,17 @@ const getNewProduct = () => async (dispatch: AppDispatch) => {
     if (response.data.status === "success") {
       dispatch({
         type: NEW_PRODUCT_LIST,
+        products: response.data.data || [],
+      });
+    }
+  }
+};
+const getAllProduct = () => async (dispatch: AppDispatch) => {
+  const response = await axios.get(`${ENV_BE}/products`);
+  if (response.status) {
+    if (response.data.status === "success") {
+      dispatch({
+        type: PRODUCT_LIST,
         products: response.data.data || [],
       });
     }
@@ -36,4 +52,4 @@ const getIpadList = () => async (dispatch: AppDispatch) => {
     }
   }
 };
-export { getNewProduct, getIphoneList, getIpadList };
+export { getNewProduct, getIphoneList, getIpadList, getAllProduct };

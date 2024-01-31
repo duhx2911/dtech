@@ -1,4 +1,5 @@
 export const NEW_PRODUCT_LIST = "NEW_PRODUCT_LIST";
+export const PRODUCT_LIST = "PRODUCT_LIST";
 export const IPHONE_LIST = "IPHONE_LIST";
 export const IPAD_LIST = "IPAD_LIST";
 export const SAVE_IMAGES = "SAVE_IMAGES";

@@ -1,15 +1,28 @@
 // import { useEffect } from "react";
 
-import { Avatar, Dropdown, MenuProps } from "antd";
+import { Avatar, Dropdown, MenuProps, Input, message } from "antd";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, createSearchParams, useNavigate } from "react-router-dom";
 import { ENV_BE } from "../../constants";
 import store from "../../stores";
 import { logout } from "../../stores/actions/loginAction";
-
+import type { SearchProps } from "antd/es/input/Search";
+const { Search } = Input;
 const Header = () => {
   const cartItems: any = useSelector<any>((state) => state.cart.cartItems);
   const dataUser: any = useSelector<any>((state) => state.userLogin.userInfo);
+  const navigate = useNavigate();
+  const onSearch: SearchProps["onSearch"] = (value) => {
+    if (value.length < 3) {
+      message.error("Nhập tối thiểu 3 ký tự");
+    } else {
+      const params = { key: value };
+      navigate({
+        pathname: "/tim-kiem",
+        search: `?${createSearchParams(params)}`,
+      });
+    }
+  };
   const itemsDropdown: MenuProps["items"] = [
     {
       key: "1",
@@ -94,16 +107,16 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <div className="">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ marginRight: 15 }}>
+                <Search
+                  placeholder="Tìm kiếm"
+                  allowClear
+                  onSearch={onSearch}
+                  style={{ width: 150 }}
+                />
+              </div>
               <div className="header-ctn">
-                <div>
-                  <a href="/#">
-                    <i className="fa fa-heart"></i>
-                    <span>Yêu thích</span>
-                    <div className="qty">2</div>
-                  </a>
-                </div>
-
                 <div className="dropdown">
                   <a className="dropdown-toggle" href="/gio-hang">
                     <i className="fa fa-shopping-cart"></i>

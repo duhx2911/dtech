@@ -4,15 +4,17 @@ import { getReview } from "../../../../stores/actions/reviewAction";
 import ReviewForm from "./ReviewForm";
 import { useSelector } from "react-redux";
 import { Reviews, dateFormat } from "../../../../constants";
+import { Empty } from "antd";
 
 const Review = ({ dataProduct }: any) => {
-  const fetchData = async () => {
-    store.dispatch(getReview());
+  const fetchData = async (id: number) => {
+    store.dispatch(getReview(id));
   };
+  console.log("rv 1: ", dataProduct);
   const reviews: any = useSelector<any>((state) => state.reviewReducer.reviews);
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(dataProduct?.product_id);
+  }, [dataProduct]);
   return (
     <div id="tab3" className="tab-pane fade in">
       <div className="row">
@@ -122,7 +124,14 @@ const Review = ({ dataProduct }: any) => {
                 );
               })}
             </ul>
-            <ul className="reviews-pagination">
+
+            {reviews.length ? null : (
+              <Empty
+                description={<span>Hãy là người đánh giá đầu tiên</span>}
+              />
+            )}
+
+            {/* <ul className="reviews-pagination">
               <li className="active">1</li>
               <li>
                 <a href="/#">2</a>
@@ -138,7 +147,7 @@ const Review = ({ dataProduct }: any) => {
                   <i className="fa fa-angle-right"></i>
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
 

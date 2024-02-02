@@ -40,8 +40,8 @@ export interface Reviews {
   create_at: any;
   update_at: any;
 }
-// export const ENV_BE = "https://shopduhx.online";
-export const ENV_BE = "http://localhost:8000";
+export const ENV_BE = "https://shopduhx.online";
+// export const ENV_BE = "http://localhost:8000";
 
 export const convertPriceToVND = new Intl.NumberFormat("vi-VN", {
   style: "currency",

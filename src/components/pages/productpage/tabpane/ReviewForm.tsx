@@ -24,10 +24,10 @@ const ReviewForm = ({ dataProduct }: any) => {
   return (
     <div
       className={
-        dataUser && dataUser.accessToken.length ? "" : "review-form-hidden"
+        dataUser && dataUser?.accessToken?.length ? "" : "review-form-hidden"
       }
     >
-      {dataUser && dataUser.accessToken.length ? null : (
+      {dataUser && dataUser?.accessToken?.length ? null : (
         <a href="/dang-nhap" className="primary-btn review-login">
           Đăng nhập
         </a>

@@ -14,7 +14,7 @@ const Review = ({ dataProduct }: any) => {
   const reviews: any = useSelector<any>((state) => state.reviewReducer.reviews);
   useEffect(() => {
     fetchData(dataProduct?.product_id);
-  }, [dataProduct]);
+  }, [dataProduct, dataProduct?.product_id]);
   return (
     <div id="tab3" className="tab-pane fade in">
       <div className="row">

@@ -12,14 +12,16 @@ const ReviewForm = ({ dataProduct }: any) => {
       content: formData.get("comment"),
       rate: formData.get("rating"),
       customer_id: dataUser.user.id,
-      product_id: dataProduct.id,
+      product_id: dataProduct.product_id,
     };
+    // console.log(body);
     const res = await axios.post(`${ENV_BE}/rating`, body);
     if (res.status === 200) {
       if (res.data.status === "success") {
         event.target.reset();
       }
     }
+    console.log(res.data);
   };
   return (
     <div
